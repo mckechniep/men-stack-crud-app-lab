@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Dogs</title>
+</head>
+<body>
+    <h1>List of Dogs</h1>
+    <a href="/dogs/new">Add a New Dog</a>
+    <ul>
+        <% dogs.forEach(dog => { %>
+            <li>
+                <strong>Name:</strong> <%= dog.name %> <br>
+                <strong>Breed:</strong> <%= dog.breed %> <br>
+                <strong>Age:</strong> <%= dog.age %> <br>
+           
+                <form action="/dogs/<%= dog._id %>?_method=DELETE" method="POST">
+                    <button type="submit">Delete <% dog.name %></button>
+                </form>
+                <form action="/dogs/<%= dog._id %>/edit" method="GET">
+                    <button type="submit">Edit <% dog.name %></button>
+                    </form>
+        
+            </li>
+            <hr>
+        <% }); %>
+    </ul>
+</body>
+</html>
